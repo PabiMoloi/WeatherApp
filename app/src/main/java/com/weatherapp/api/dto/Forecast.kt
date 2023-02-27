@@ -8,7 +8,7 @@ data class Forecast(
     @SerializedName("main")
     var main: Main? = Main(),
     @SerializedName("weather")
-    var weather: Weather? = Weather(),
+    var weather: ArrayList<Weather> = arrayListOf(),
     @SerializedName("clouds")
     var clouds: Clouds? = Clouds(),
     @SerializedName("wind")
