@@ -50,18 +50,10 @@ class WeatherViewModelTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `should call repository to get current weather`() = runTest {
+    fun `should call repository to get current weather and forecast`() = runTest {
         mockCurrentWeather()
         viewModel.getWeather(-24.87, -21.34)
         Mockito.verify(repository).getCurrentWeather(-24.87, -21.34)
-    }
-
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun `should call repository to get forecast`() = runTest {
-        mockForecast()
-        viewModel.getForecast(-24.87, -21.34)
         Mockito.verify(repository).getForecast(-24.87, -21.34)
     }
 
