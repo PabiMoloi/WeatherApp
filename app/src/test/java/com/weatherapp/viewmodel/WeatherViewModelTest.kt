@@ -3,7 +3,6 @@ package com.weatherapp.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.weatherapp.api.dto.*
 import com.weatherapp.domain.repository.WeatherRepository
-import com.weatherapp.domain.repository.impl.WeatherRepositoryImpl
 import com.weatherapp.ui.viewmodel.WeatherViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.resetMain
