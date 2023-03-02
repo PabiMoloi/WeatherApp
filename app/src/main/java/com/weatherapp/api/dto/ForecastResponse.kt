@@ -19,7 +19,7 @@ fun ForecastResponse.toForecastWeather(): List<ForecastWeather> {
     val forecastList = ArrayList<ForecastWeather>()
     for (item in list!!) {
         val forecast = ForecastWeather(
-            temperature = item.main?.temp,
+            temperature = item.main?.temp?.toInt(),
             date = removeTimeStamp(item.dt_txt),
             description = item.weather[0].main
         )

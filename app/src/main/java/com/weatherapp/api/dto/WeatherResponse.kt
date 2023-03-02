@@ -36,9 +36,9 @@ data class WeatherResponse(
 
 fun WeatherResponse.toCurrentWeather(): CurrentWeather {
     return CurrentWeather(
-        temperature = main?.temp,
-        minimumTemp = main?.tempMin,
-        maximumTemp = main?.tempMax,
+        temperature = main?.temp?.toInt(),
+        minimumTemp = main?.tempMin?.toInt(),
+        maximumTemp = main?.tempMax?.toInt(),
         description = weather[0].main
     )
 }

@@ -7,5 +7,4 @@
     <string name="title_continue">Continue</string>
     <string name="title_location_permission">Location Permission</string>
     <string name="location_permission_description">The application requires your location in order to show the weather.</string>
-
 </resources>

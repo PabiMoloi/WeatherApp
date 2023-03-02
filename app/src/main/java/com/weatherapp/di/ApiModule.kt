@@ -21,27 +21,22 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
-        .apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
 
     @Singleton
     @Provides
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient
-            .Builder()
-            .addInterceptor { apikeyInterceptor(it) }
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
+        OkHttpClient.Builder().addInterceptor { apikeyInterceptor(it) }
+            .addInterceptor(httpLoggingInterceptor).build()
 
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(Constants.BASE_URL)
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(Constants.BASE_URL).client(okHttpClient).build()
 
     @Singleton
     @Provides
@@ -50,14 +45,9 @@ class ApiModule {
     )
 
     private fun apikeyInterceptor(chain: Interceptor.Chain) = chain.proceed(
-        chain.request()
-            .newBuilder()
-            .url(
-                chain.request().url.newBuilder()
-                    .addQueryParameter("appid", BuildConfig.API_KEY)
-                    .addQueryParameter("units", "metric")
-                    .build()
-            )
-            .build()
+        chain.request().newBuilder().url(
+            chain.request().url.newBuilder().addQueryParameter("appid", BuildConfig.API_KEY)
+                .addQueryParameter("units", "metric").build()
+        ).build()
     )
 }
