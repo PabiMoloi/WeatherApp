@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.HomeFragment">
+
+    <ImageView
+        android:id="@+id/imageViewBackground"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewTemperature"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTempDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBackground"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="25" />
+
+    <TextView
+        android:id="@+id/textViewTempDescription"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textAllCaps="true"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewBackground"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTemperature"
+        app:layout_constraintStart_toStartOf="@+id/textViewTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature"
+        app:layout_constraintVertical_bias="0.5"
+        tools:text="Cloudy" />
+
+    <TextView
+        android:id="@+id/textViewTempMin"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTempMinTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewTempMinTitle"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground"
+        tools:text="16" />
+
+    <TextView
+        android:id="@+id/textViewTempMinTitle"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/min"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTempMin" />
+
+    <TextView
+        android:id="@+id/textViewTempCurrent"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTempMax"
+        app:layout_constraintStart_toEndOf="@+id/textViewTempMin"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground"
+        tools:text="28" />
+
+    <TextView
+        android:id="@+id/textViewTempCurrentTitle"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/current"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTempMaxTitle"
+        app:layout_constraintStart_toEndOf="@+id/textViewTempMinTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTempCurrent" />
+
+    <TextView
+        android:id="@+id/textViewTempMax"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTempMaxTitle"
+        app:layout_constraintStart_toStartOf="@+id/textViewTempMaxTitle"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBackground"
+        tools:text="29" />
+
+    <TextView
+        android:id="@+id/textViewTempMaxTitle"
+        style="@style/AppTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/max"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTempMax" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTempCurrentTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewForecast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:listitem="@layout/list_item_forecast" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/weatherGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="imageViewBackground,textViewTempCurrent,textViewTempCurrentTitle,
+        textViewTempDescription,textViewTemperature,textViewTempMax,textViewTempMaxTitle,textViewTempMin,textViewTempMinTitle,
+        recyclerviewForecast, view"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-16dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+</androidx.constraintlayout.widget.ConstraintLayout>
